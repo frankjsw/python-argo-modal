@@ -10,8 +10,8 @@ from fastapi import FastAPI, Response
 import modal
 
 # --- 1. 用户可配置常量 ---
-MODAL_APP_NAME = os.environ.get('MODAL_APP_NAME') or "proxy-app"
-MODAL_USER_NAME = os.environ.get('MODAL_USER_NAME') or ""
+MODAL_APP_NAME = os.environ.get('MODAL_APP_NAME') or "frankjsw"
+MODAL_USER_NAME = os.environ.get('MODAL_USER_NAME') or "frankjsw"
 
 # --- 2. 定义 Modal 镜像 ---
 image = modal.Image.debian_slim().pip_install("fastapi", "uvicorn", "requests").run_commands(
@@ -68,11 +68,11 @@ async def lifespan(app_instance: FastAPI):
     # --- 应用启动时 ---
     print("▶️ Lifespan startup: 正在启动后台服务...")
     
-    UUID = os.environ.get('UUID') or 'be16536e-5c3c-44bc-8cb7-b7d0ddc3d951'
-    ARGO_DOMAIN = os.environ.get('ARGO_DOMAIN') or ''
-    ARGO_AUTH = os.environ.get('ARGO_AUTH') or ''
-    ARGO_PORT = int(os.environ.get('ARGO_PORT') or '8001')
-    NAME = os.environ.get('NAME') or 'Modal'
+    UUID = os.environ.get('UUID') or 'eea64bd2-dd10-458f-a31a-0a687cdde8e4'
+    ARGO_DOMAIN = os.environ.get('ARGO_DOMAIN') or 'modal.1.2.9.b.0.d.0.0.1.0.a.2.ip6.arpa'
+    ARGO_AUTH = os.environ.get('ARGO_AUTH') or 'eyJhIjoiNjU4NTBjYjUzOTUyZjNhNTEwNThiOTEwMWVlYjMzY2QiLCJ0IjoiODlhMTA4OGQtNTliZS00ZjhkLWI2N2EtMDE2ZmE2YWNlZWVmIiwicyI6Ik5qQmxNbVZqTldJdFltSmlOQzAwTW1ZeUxUazFPREF0Wm1OaFltUXdaVGRtTTJReCJ9'
+    ARGO_PORT = int(os.environ.get('ARGO_PORT') or '8009')
+    NAME = os.environ.get('NAME') or 'modal'
     CFIP = os.environ.get('CFIP') or 'www.visa.com.tw'
     CFPORT = int(os.environ.get('CFPORT') or '443')
     NEZHA_SERVER = os.environ.get('NEZHA_SERVER') or ''
@@ -296,3 +296,4 @@ def web_server():
             return Response(content=f"读取订阅时发生错误: {e}", status_code=500, media_type="text/plain; charset=utf-8")
     
     return fastapi_app
+
