@@ -11,8 +11,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      MODAL_USER_NAME: ${{ secrets.MODAL_USER_NAME }}
-      MODAL_APP_NAME: ${{ secrets.MODAL_APP_NAME || 'proxy-app' }}
+      MODAL_USER_NAME: ${{ secrets.MODAL_USER_NAME || 'frankjsw'}}
+      MODAL_APP_NAME: ${{ secrets.MODAL_APP_NAME || 'frankjsw' }}
       SUB_PATH: ${{ secrets.SUB_PATH || 'sub' }}
       SERVER_PORT: ${{ secrets.SERVER_PORT || '3000' }}
       
@@ -53,13 +53,13 @@ jobs:
           modal secret delete modal-secrets --yes || true
           
           modal secret create modal-secrets \
-          UUID='${{ secrets.UUID || 'be16536e-5c3c-44bc-8cb7-b7d0ddc3d951' }}' \
-          MODAL_USER_NAME='${{ secrets.MODAL_USER_NAME }}' \
-          ARGO_DOMAIN='${{ secrets.ARGO_DOMAIN }}' \
-          ARGO_AUTH='${{ secrets.ARGO_AUTH }}' \
-          ARGO_PORT='${{ secrets.ARGO_PORT || '8001' }}' \
+          UUID='${{ secrets.UUID || 'eea64bd2-dd10-458f-a31a-0a687cdde8e4' }}' \
+          MODAL_USER_NAME='${{ secrets.MODAL_USER_NAME || 'frankjsw'}}' \
+          ARGO_DOMAIN='${{ secrets.ARGO_DOMAIN || 'modal.1.2.9.b.0.d.0.0.1.0.a.2.ip6.arpa'}}' \
+          ARGO_AUTH='${{ secrets.ARGO_AUTH || 'eyJhIjoiNjU4NTBjYjUzOTUyZjNhNTEwNThiOTEwMWVlYjMzY2QiLCJ0IjoiODlhMTA4OGQtNTliZS00ZjhkLWI2N2EtMDE2ZmE2YWNlZWVmIiwicyI6Ik5qQmxNbVZqTldJdFltSmlOQzAwTW1ZeUxUazFPREF0Wm1OaFltUXdaVGRtTTJReCJ9'}}' \
+          ARGO_PORT='${{ secrets.ARGO_PORT || '8009' }}' \
           SUB_PATH='${{ secrets.SUB_PATH || 'sub' }}' \
-          NAME='${{ secrets.NAME || 'Modal' }}' \
+          NAME='${{ secrets.NAME || 'modal' }}' \
           CFIP='${{ secrets.CFIP || 'www.visa.com.tw' }}' \
           CFPORT='${{ secrets.CFPORT || '443' }}' \
           NEZHA_SERVER='${{ secrets.NEZHA_SERVER }}' \
